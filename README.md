@@ -138,7 +138,7 @@ PCA to 2 dimensions is used for visualisation, confirming geometric separation o
 
 ### Key Finding
 
-- **54.4%** of contributors fall in the Low productivity bucket — consistent with the well-documented open-source pattern where a small core drives the majority of output
+- **54.4%** of contributors fall in the Low productivity bucket - consistent with the well-documented open-source pattern where a small core drives the majority of output
 - High-productivity contributors take **44.8–64.8%** of their PRs in the `feat` category; lower-bucket contributors are chore and fix-heavy
 - Productivity is not just about throughput - it also reflects the *type* of work a contributor takes on
 
@@ -184,7 +184,7 @@ jupyter notebook · HuggingFace datasets
 
 ## Limitations
 
-- `dev_time_hrs` is elapsed wall-clock time, not active coding time — a PR left open over a weekend accumulates hours without developer activity
+- `dev_time_hrs` is elapsed wall-clock time, not active coding time - a PR left open over a weekend accumulates hours without developer activity
 - Observation window ends at PR close; work done locally before the first push is not captured
 - Story point proxy has not been validated against human-assigned estimates (none exist in this dataset)
 
