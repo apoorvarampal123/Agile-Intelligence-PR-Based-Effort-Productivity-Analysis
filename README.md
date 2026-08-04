@@ -48,7 +48,7 @@ Raw dataset (6,618 PRs)
     │             Bounds are computed within each type independently.
     │
     └── Step 5: Quartile binning per type → S / M / L / XL → effort points 1 / 2 / 4 / 8
-                → Clean dataset: 3,998 PRs · 1,796 contributors
+                → Clean dataset: 1,796 contributors
 ```
 
 ### Story Point Derivation
