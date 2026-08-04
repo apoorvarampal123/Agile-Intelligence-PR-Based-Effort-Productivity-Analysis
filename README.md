@@ -1,7 +1,4 @@
 # Can We Derive Agile Metrics from Raw GitHub Data?
-
-> **CSC 504 · University of Victoria · Summer 2026**
-
 ---
 
 ## Overview
