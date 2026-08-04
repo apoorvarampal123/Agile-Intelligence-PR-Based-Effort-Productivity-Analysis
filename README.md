@@ -3,9 +3,9 @@
 
 ## Overview
 
-Agile teams track velocity and productivity to plan sprints — but these metrics almost always come from manual story-point estimation (planning poker), which is time-consuming and subjective.
+Agile teams track velocity and productivity to plan sprints - but these metrics almost always come from manual story-point estimation (planning poker), which is time-consuming and subjective.
 
-This project investigates whether meaningful agile metrics can be **derived automatically from raw GitHub pull-request data**, with zero manual estimation. Using the [AIDev dataset](https://huggingface.co/datasets/hao-li/AIDev) (MSR 2026 Mining Challenge), we build a full data pipeline that computes cycle time, assigns proxy story points, and calculates contributor velocity and productivity — then answers four research questions through four use cases.
+This project investigates whether meaningful agile metrics can be **derived automatically from raw GitHub pull-request data**, with zero manual estimation. Using the [AIDev dataset](https://huggingface.co/datasets/hao-li/AIDev) (MSR 2026 Mining Challenge), we build a full data pipeline that computes cycle time, assigns proxy story points, and calculates contributor velocity and productivity - then answers four research questions through four use cases.
 
 ---
 
@@ -34,7 +34,7 @@ The pipeline runs in five sequential steps. Removed records are saved separately
 ```
 Raw dataset (6,618 PRs)
     │
-    ├── Step 1: Join tables · compute dev_time_hrs = closed_at − created_at
+    ├── Step 1: Join tables · compute dev_time_hrs = closed_at - created_at
     │
     ├── Step 2: Drop open PRs (no closed_at) · remove instant closes ≤ 5 min
     │           → Cycle time is undefined for open PRs; imputing a close date
@@ -74,7 +74,7 @@ For **each task type independently**:
 
 ---
 
-## Use Case 1 — Effort Trend Analysis (RQ1)
+## Use Case 1 - Effort Trend Analysis (RQ1)
 
 **Goal:** Analyse how development effort evolves over time at the contributor level.
 
@@ -89,7 +89,7 @@ For **each task type independently**:
 
 ### Key Finding
 
-Task type is the dominant predictor of cycle time. `feat` and `refactor` PRs have substantially higher median development time than `ci`, `style`, and `docs` PRs — confirming that per-type binning is a substantive requirement, not a convenience. At the contributor level, effort trajectories are heterogeneous: some contributors show rising velocity over time, others declining, others stable.
+Task type is the dominant predictor of cycle time. `feat` and `refactor` PRs have substantially higher median development time than `ci`, `style`, and `docs` PRs - confirming that per-type binning is a substantive requirement, not a convenience. At the contributor level, effort trajectories are heterogeneous: some contributors show rising velocity over time, others declining, others stable.
 
 ### Answer to RQ1
 
@@ -97,13 +97,13 @@ Task type is the dominant predictor of cycle time. `feat` and `refactor` PRs hav
 
 ---
 
-## Use Case 2 — Productivity Clustering (RQ2)
+## Use Case 2 - Productivity Clustering (RQ2)
 
 **Goal:** Identify distinct developer productivity archetypes through unsupervised clustering.
 
 ### Approach
 
-**Feature selection** — Each of the 1,796 contributors is represented by 5 features:
+**Feature selection** - Each of the 1,796 contributors is represented by 5 features:
 
 | Feature | Description |
 |---------|-------------|
@@ -115,14 +115,14 @@ Task type is the dominant predictor of cycle time. `feat` and `refactor` PRs hav
 
 Profiles are built row-by-row from the clean dataset (not by averaging already-averaged values) to avoid mean-of-means distortion across contributors with different observation windows. Features are standardised with `StandardScaler`.
 
-**Finding optimal k** — K-Means run over k = 2–40, validated by:
-- **Elbow curve** — diminishing returns in inertia beyond k = 7
-- **Silhouette score** — peaks at k = 7 (score = 0.50)
-- **DBSCAN cross-validation** (ε = 0.8, min_samples = 5) — strong agreement with K-Means
+**Finding optimal k** - K-Means run over k = 2–40, validated by:
+- **Elbow curve** - diminishing returns in inertia beyond k = 7
+- **Silhouette score** - peaks at k = 7 (score = 0.50)
+- **DBSCAN cross-validation** (ε = 0.8, min_samples = 5) - strong agreement with K-Means
 
 Optimal k = **7**.
 
-**From 7 clusters → 5 productivity buckets** — Each cluster's mean productivity score is computed and mapped to a named bucket:
+**From 7 clusters → 5 productivity buckets** - Each cluster's mean productivity score is computed and mapped to a named bucket:
 
 | K-Means Cluster | Productivity Mean | Bucket |
 |:-:|--:|--|
@@ -140,7 +140,7 @@ PCA to 2 dimensions is used for visualisation, confirming geometric separation o
 
 - **54.4%** of contributors fall in the Low productivity bucket — consistent with the well-documented open-source pattern where a small core drives the majority of output
 - High-productivity contributors take **44.8–64.8%** of their PRs in the `feat` category; lower-bucket contributors are chore and fix-heavy
-- Productivity is not just about throughput — it also reflects the *type* of work a contributor takes on
+- Productivity is not just about throughput - it also reflects the *type* of work a contributor takes on
 
 ### Answer to RQ2
 
@@ -199,5 +199,3 @@ jupyter notebook · HuggingFace datasets
 [3] A. Mockus, R. T. Fielding, J. D. Herbsleb. Two case studies of open source software development. ACM TOSEM, 2002.
 
 ---
-
-*University of Victoria · CSC 504 · Summer 2026*
